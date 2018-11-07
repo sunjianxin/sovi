@@ -1,0 +1,17 @@
+CXX=g++
+PLATFORM=i386-apple-darwin18_clang
+SILO_DIR=/Users/jianxinsun/research/visit/visit2.13.2/visit/silo/4.10.1/$(PLATFORM)
+CFLAGS=-I$(SILO_DIR)/include
+LDFLAGS=-L/$(SILO_DIR)/lib
+LIBS=-lsiloh5
+
+makeapp: soilapp.cpp soil.hpp soil.cpp
+	$(CXX) soilapp.cpp soil.cpp
+clean:
+	rm soilapp
+
+
+
+
+
+../configure --build=i386-apple-darwin18_clang

@@ -1,0 +1,2171 @@
+2011-08-31  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Bump version to 0.0.6.
+
+2011-08-18  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Bump version to 0.0.4.
+
+2011-04-27  Kevin Ediger  <kevin@dixon>
+
+	* sysconf/Makefile.am: Updated boot system for LI-6800 head.
+
+2010-10-07  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Update CPLD firmware to
+	version 1.0.20 which fixes the clock_yz noise problem.
+
+	* configure.ac: Update to version 1.0.14
+
+2010-09-24  Kevin Ediger  <kevin@dixon>
+
+	* base/base.cpp (Run): Cleaned up zip code.
+
+	* base/logger.hpp/cpp (class Logger): Cleaned up zip code.
+
+2010-09-23  Kevin Ediger  <kevin@dixon>
+
+	* methane/calibrator.hpp (H): Fix Kelvin value in
+	H2ODensityToMoleFrac.
+
+2010-09-13  Kevin Ediger  <kevin@dixon>
+
+	* base/base.cpp (Run): Added zip compression for logging which
+	requires indicating fast and slow shutdown points so files can be
+	closed quickly at critical points.
+
+	* base/logger.hpp/cpp (class Logger): Added zip compression.
+
+	* libmethane/doc7700.hpp/cpp (ConfigurableComposite): Add a zip
+	compression option to the XML doc.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update to DSP code
+	version 1.0.38
+
+	* methane/methane.hpp/cpp (class Methane): Use a count to
+	determine output rate instead of modulus.
+
+2010-08-13  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Updated to version 1.0.13.
+
+2010-08-07  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (SOURCES): Added driver to fix CS3 timing
+	for broken kernels.
+
+	* sysconf/update-prep.sh: Patch up the CS3 timing for broken
+	kernels.
+
+	* network/progethernet.cpp (main): Return -1 error code only on
+	failures, not when the operator elects not to update the Ethernet
+	address on the chip.
+
+	* sysconf/factory: Abort the factory setup if progethernet fails.
+
+	* sysconf/update.sh: Fix error return on failure so that flash
+	problems aren't obscured by the incorrect "SUCCESS" message.
+
+	* configure.ac: Update to version 1.0.12.
+
+2010-08-05  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Updated LI-7700 and
+	LI-7750 DSP firmware.
+
+	* configure.ac: Update to version 1.0.11.
+
+2010-08-04  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 1.0.10.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update to latest DSP
+	firmware.
+
+2010-07-29  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Updated to version 1.0.9
+
+	* libmethane/clocksync.hpp/cpp (class ClockSync): Fix tick
+	rollover problem when the clock sync message rolls over before the
+	data messages.
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Updated firmware for
+	LI-7700 head and base box.
+
+2010-07-12  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 1.0.7.
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Update to firmware
+	version 0.9.4.
+
+2010-07-07  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Updated to version 1.0.6.
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Updated to version 0.9.3
+	dsp firmware.
+
+2010-06-24  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Updated DSP code for the
+	LI-7750.
+
+2010-06-23  Kevin Ediger  <kevin@dixon>
+
+	* drivers/dsp7700.c (dsp_start): Don't actually allocate
+	additional memory to the DSP until needed.
+
+	* base/logger.cpp (Logger): Fix initialization order.
+
+	* configure.ac: Update to version 1.0.5.
+
+	* base/base.cpp (GotSignal): Remove path and device with USB disk
+	events. Improved query at startup to determine if a USB drive is
+	present. Use DATACLOCK for all date/time strings.
+
+	* base/logger.hpp/cpp (PollTimer): Use DATACLOCK message for all
+	time/date strings.
+
+	* base/datahandler.hpp/cpp (D): Added path and device to disk
+	mount/unmount events.
+
+	* base/dspdataout.cpp (DataHandler_GotDATA): Output SDM data to
+	the DSP.
+
+	* base/intersys.h (struct): Add output rate to OUTPUT_CFG.
+
+	* base/dspdevice.hpp/cpp (PollItem): Set SDM address and output
+	rate.
+
+	* base/includecols.hpp/cpp (I): Revamp IncludeCols for efficiency.
+
+	* libmethane/doc7700.hpp (ConfigurableComposite): Added SDM
+	address accessors.
+
+	* common-c++/socketserver.hpp (PollItem): Added the NumClients()
+	method to SocketServer.
+
+	* common-c++/str_util.hpp/cpp: Added StripCharacter().
+
+	* common-c++/dbus.hpp/cpp (DBusBase): Added DBusEventSignaller.
+
+	* drivers/dsp7700.c (DSP_MMU_MEM_SIZE): Enable extra memory for
+	access from the DSP using the DSP MMU unit.
+
+	* drivers/io7700.h/c (io7700_tag): Control the DSP MMU clock.
+	(io7700_write_cpld_sdm_addr): Add SDM address functions.
+
+	* drivers/dsp_ioctl.h (DSP7700_IOC_CPLD_SETSDMADDR): Add the SDM
+	address to the IOCTL calls.
+
+	* drivers/hardware.h (c): Add sdm_addr register to the CPLD.
+
+2010-06-04  Kevin Ediger  <kevin@dixon>
+
+	* base/base.cpp (DataHandler_GotXMLDoc): Make sure the timezone in
+	the data file logger matches the clock timezone.
+
+	* base/logger.hpp/cpp (class Logger): Added timezone header.
+
+	* configure.ac: Update to version 1.0.4.
+
+2010-05-13  Kevin Ediger  <kevin@dixon>
+
+	* common-c++/bonjourclient.cpp: Added support for QT on Mac OSX.
+
+2010-05-06  Kevin Ediger  <kevin@dixon>
+
+	* base/doc7750.hpp/cpp (Config7750): Added IsConfigChanged()
+	method.
+
+	* methane/methane.cpp (NotifySocketListeners): Be more selective
+	when sending the DATAEVENT CONFIGCHANGED message to network
+	clients.
+
+	* base/base.cpp (NotifySocketListeners): Be more selective when
+	sending the DATAEVENT CONFIGCHANGED message to network clients.
+
+	* libmethane/doc7700.hpp/cpp (class Doc7700): Implemented
+	IsConfigChanged().
+
+	* base/rs232.hpp/cpp (Listener): Added DATACLOCK output.
+
+	* base/datahandler.hpp/cpp (D): Added DATACLOCK support.
+
+	* configure.ac: Update to version 1.0.3.
+
+2010-05-05  Kevin Ediger  <kevin@dixon>
+
+	* base/rs232.hpp/cpp (Listener): Send raw XML strings out the
+	RS-232.
+
+	* base/datahandler.hpp/cpp (D): Dispatch raw XML strings so they
+	can be sent out the RS-232.
+
+	* configure.ac: Update to version 1.0.2.
+
+2010-03-02  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 1.0.0.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Removed authorized_keys file.
+
+2010-02-17  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.81.
+
+2010-02-16  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update DSP code to
+	version 1.0.33.
+
+	* configure.ac: Update to version 0.0.80.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update DSP dirmware to
+	version 1.0.32.
+
+2010-02-15  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Update CPLD firmware to
+	version 1.0.18.
+
+	* base/base.cpp (GotAuxInput): Output base box type and hostname
+	with each 'Base' record.
+
+	* libmethane/netcontrol.cpp (Refresh): Use std::getline() to read
+	hostnames from /etc/hostname file so that spaces are read
+	correctly.
+
+	* methane/methane.hpp/cpp (Methane): Added base box connected and
+	disconnected events.
+
+	* configure.ac: Updated to version 0.0.79.
+
+	* methane/methane.hpp/cpp (Methane): Added DATACLOCKSYNC
+	message. Don't output DATASTAT messages until requested.
+
+	* libmethane/doc7700.cpp (ConfigBoxOutput): Don't output status
+	messages by default.
+
+	* libmethane/doc7700.hpp/cpp (ConfigurableComposite): Added
+	LineLock command and low and high temp ranges for the laser
+	cooler.
+
+2010-02-12  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update to DSP code
+	version 1.0.31.
+
+2010-02-05  Kevin Ediger  <kevin@dixon>
+
+	* methane/methane.cpp (GotData): When sending the DATACLOCK
+	message, use the Linux interrupt timestamp. This timestamp may be
+	usable for monitoring system delays.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated DSP code.
+
+2010-02-02  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.78.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update DSP Firmware to
+	1.0.29.
+
+2010-02-01  Kevin Ediger  <kevin@dixon>
+
+	* libmethane/doc7700common.cpp: Added <ctime> header.
+
+	* configure.ac: Update to version 0.0.77.
+
+	* sysconf/rc.sysinit: Set the bridge forward delay to 0. It was
+	previously 3 which didn't provide any advantage and so delayed
+	interface readiness unnecessarily.
+
+2010-01-29  Kevin Ediger  <kevin@dixon>
+
+	* base/base.cpp/hpp (_UpdatePolledParameters): Use time_t instead
+	of Timestamp.
+
+	* libmethane/doc7700.hpp (GotClockSetting): Use time_t instead of
+	Timestamp.
+
+	* libmethane/doc7700common.hpp/cpp (ConfigCfgClock): Use time_t
+	instead of Timestamp.
+
+	* common-c++/linuxclock.hpp/cpp (LinuxClock): Added time_t version
+	of SetTime() and Time methods.
+
+	* methane/methane.hpp/cpp (Methane): Use time_t instead of
+	Timestamp for when the clock is running, but before 1989.
+
+2010-01-28  Kevin Ediger  <kevin@dixon>
+
+	* libmethane/doc7700.hpp/cpp (ConfigOutput): Added poll support.
+
+	* configure.ac: Update to version 0.0.76.
+
+	* sysconf/ptpd (PTPD_OPTS): Remove 'slave only' option from
+	automatic PTP mode to avoid the "no master" problem.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated DSP firmware for
+	LI-7700 head.
+
+	* libmethane/doc7700.hpp/cpp (Doc7700): Added DSP test data
+	request/response. Added manual drive control on laser DACS.
+
+	* libmethane/ptpcontrol.cpp (RefreshMode): Fix PTP command line
+	parameter parsing bug.
+
+	* methane/methane.hpp/cpp (Methane): Added DSP test data
+	request/response. Added manual drive control on laser DACS.
+
+	* methane/dspdevice.hpp/cpp (DSPDevice): Added DSP test data
+	request/response. Added manual drive control on laser DACS.
+
+2010-01-25  Kevin Ediger  <kevin@dixon>
+
+	* common-c++/bonjourclient.cpp (Lookup): When resolving names, use
+	case-insensitive compares.
+
+2010-01-22  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.75.
+
+	* base/rs232.cpp (HandleDATAEVENT): Write the DATADIAGH header all
+	the time, not just when DATASTAT is turned on.
+
+	* common-c++/pollprocessor.cpp/hpp (_GetMSCount): Added a
+	monotonically increasing millisecond clock that will not be
+	affected when the wall clock time is set.
+
+	* common-c++/testpoll.cpp (PollTimer): Flush the output stream so
+	message go out immediately.
+
+	* libmethane/doc7700.hpp/cpp (ConfigurableComposite): Got rid of
+	some extraneous command callbacks and implemented data polling
+	command.
+
+	* methane/methane.hpp/cpp (Methane): Implemented 0Hz data output
+	rate with polling command.
+
+2010-01-14  Kevin Ediger  <kevin@dixon>
+
+	* base/base.hpp/cpp (Base): Use new DSPDataOut class.
+
+	* base/dspdevice.hpp/cpp (DSPDevice): Added new method
+	SendOutputConfig for setting bandwidth and SDM address.
+
+	* base/Makefile.am (core_base_SOURCES): Added new files
+	dspdataout.hpp and dspdataout.cpp
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Updated DSP firmware for
+	base box.
+
+	* methane/methane.cpp (HandlePlainTextRequest): Send the DATADACSH
+	header record when a base box first connects.
+
+	* network/network.hpp/cpp (Network): Use PollTimer for periodic
+	task.
+
+2010-01-13  Kevin Ediger  <kevin@dixon>
+
+	* libmethane/doc7700.hpp/cpp (Doc7700): Removed H2O. Cleared cruft
+	from the XML document.
+
+	* methane/methane.hpp/cpp (Methane): Removed H2O.
+
+2010-01-11  Kevin Ediger  <kevin@dixon>
+
+	* libmethane/clocksync.hpp/cpp (ClockSync): Remove the unused
+	_nsecs_per_tick variable.
+
+	* base/base.hpp/cpp (Base): Added additional DSP message support
+	and GPS PPS support.
+
+	* base/rs232.hpp (Listener): Make RS232GotLine() pure virtual to
+	catch signature errors.
+
+	* base/dspdevice.hpp/cpp (DSPDevice): Updated for clk600
+	synchronization, analog inputs, DAC outputs, and SDM
+	outputs. Included preliminary support for GPS PPS.
+
+	* base/Makefile.am (core_base_SOURCES): Added
+	gpsnmeasentenceparser.hpp/cpp, gpsnmeaparser.hpp/cpp, and
+	gisutils.hpp/cpp.
+
+	* libmethane/Makefile.am (libmethane_la_SOURCES): Added
+	linuxclocksync.hpp and linuxclocksync.cpp.
+
+	* libmethane/ptpcontrol.hpp/cpp (StartGPS()): Added GPS control
+	settings for use with ptpd.
+
+	* sysconf/ptpd (prog): Added startgps and restartgps functions.
+
+	* common-c++/linuxclock.hpp/cpp (SetTime()): Added
+	seconds+nanoseconds versions of SetTime() and Time().
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Updated firmware files.
+
+2010-01-05  Kevin Ediger  <kevin@dixon>
+
+	* sysconf/shadow (root): Update root password.
+
+2009-12-21  Kevin Ediger  <kevin@dixon>
+
+	* libmethane/doc7700.hpp/cpp (ConfigurableComposite): Added
+	DATACLOCK configuration.
+
+	* methane/washme.cpp (SetWashSchedule): Don't allow shorter repeat
+	intervals than 1 minute and always set the duration at least 10
+	seconds shorter than the repeat interval.
+
+	* methane/methaneapp.cpp (class MethaneApp): Removed simulated
+	base code.
+
+	* methane/methane.hpp/cpp (class Methane): Removed simulated base
+	code. Added DATACLOCK record.
+
+	* configure.ac: Update to version 0.0.74.
+
+2009-12-16  Kevin Ediger  <kevin@dixon>
+
+	* base/datahandler.cpp (_DispatchXML): Fix comparison operator.
+
+2009-12-15  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.73.
+
+	* base/base.cpp (DataHandler_GotXMLDoc): Force the base box
+	timezone to be the same as the head it's connected to.
+
+	* base/datahandler.cpp (_DispatchXML): Ignore <ack> XML strings.
+
+	* methane/methane.cpp (GotTimezoneSetting): Set the timezone no
+	matter the mode that PTP is currently running in.
+
+2009-12-08  Kevin Ediger  <kevin@dixon>
+
+	* common-c++/linuxclock.hpp/cpp (LinuxClock::ZoneOffsetFromUTC()):
+	Added a way to figure out how many seconds a timezone is from UTC
+	time.
+
+	* Makefile.am (ACLOCAL_AMFLAGS): Fix incorrect quoting.
+
+2009-11-18  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to verion 0.0.72.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update to DSP firmware
+	tga1_0_26.hex.
+
+2009-11-17  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.71.
+
+	* base/base.cpp (GotClockSync): Updated clock sync code.
+	(GotData): Send clock sync status for now instead of aux5-aux8.
+
+	* sysconf/rc.sysinit: Start STP and enable a 3 second learning
+	phase on br0 to prevent packet storms when all three ports are on
+	the same network.
+
+	* drivers/Makefile.am (DSP7550_FIRMWARE): Added Actel firmware and
+	updated DSP firmware for 7750.
+
+	* drivers/io7700.c (io7700_cpld_open): Added the tristate ping for
+	programming actel FPGAs in circuit.
+
+	* drivers/hardware.h (HARDWARE_CPLD_TRST_GPIO): Added the tristate
+	pin for programming actel FPGAs in circuit.
+
+	* configure.ac: Update to version 0.0.70.
+
+2009-10-20  Kevin Ediger  <kevin@dixon>
+
+	* methane/methane.cpp (_ApplyFactoryCPLDInt): Fix permission
+	problem.
+
+2009-10-19  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.69.
+
+	* base/base.cpp (MountDisk): Jump to super-user for mounting and
+	unmounting USB disks. Mount at '/home/licor/data' to provide
+	winscp access.
+
+	* base/dspdevice.cpp (SetCPLDClockYZ): Jump to super-user for
+	ioctl() calls.
+
+	* methane/dspdevice.cpp (SetCPLDClockYZ): Jump to super-user for
+	ioctl() calls.
+
+	* sysconf/rc.sysinit: Updated to use the new licor user.
+
+	* sysconf/passwd,shadow,group (licor): Added licor user.
+
+2009-10-07  Kevin Ediger  <kevin@dixon>
+
+	* configure.ac: Update to version 0.0.68.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated DSP code to
+	version 1.0.23.
+
+2009-10-01  Kevin Ediger  <kevin@dixon>
+
+	* methane/washme.cpp (SetWashSchedule): Stop the pump 10 seconds
+	before the spin motor turns off.
+
+	* Makefile.am (ACLOCAL_AMFLAGS): Added recommended automake
+	define.
+
+	* configure.ac: Update to version 0.0.67.
+
+	* libmethane/doc7700.hpp/cpp (ConfigurableComposite): Added SDM
+	address and electrical/optical offsets to LI-7700 XML document.
+
+	* methane/methane.cpp (ApplyFactory): Use new
+	DSPDevice::SendOffsets() method.
+
+	* methane/dspdevice.hpp/cpp (DSPDevice): Added SendOffsets()
+	method.
+
+2009-09-30  Kevin Ediger  <kevin@dixon>
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update to DSP code
+	1.0.21.	(CPLD_FIRMWARE): Update CPLD code to 1.0.16.
+
+	* configure.ac: Update to version 0.0.66.
+
+2009-09-18  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* configure.ac: Updated to version 0.0.65.
+
+	* libmethane/doc7700.hpp/cpp (ConfigurableComposite): Implemented
+	expanded top heater configuration.
+
+	* methane/methane.hpp/cpp (Listener): Implemented expanded top
+	heater configuration.
+
+	* base/logger.hpp/cpp (Listener): Capture DATAEVENT SN string and
+	record serial number in the log file.
+
+	* methane/methane.cpp (ClientOpened): Added DATAEVENT SN for
+	reporting instrument serial number.
+
+2009-09-16  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Updated CPLD firmware to
+	version 1.0.15.
+
+2009-08-24  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Update DSP firmware to
+	1.0.16.
+
+	* configure.ac: Update version to 0.0.64.
+
+	* base/datahandler.hpp/cpp (class DataHandler): Added DAC data
+	dispatching.
+
+	* base/base.hpp/cpp (Listener): Added preliminary DAC data
+	handling.
+
+	* methane/methane.cpp/hpp (_dac_volts): Send DAC volts (floating
+	point) instead of 16-bit count to be consistent with auxilliarys.
+
+2009-08-07  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* methane/methane.cpp/hpp (_ComputeDac): Added _ComputeDac() for
+	calculating 16-bit DAC values.
+
+	* libmethane/doc7700.hpp (ConfigCfgDac): Added accessor methods
+	for the DAC configuration.
+
+2009-08-06  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* methane/methane.cpp/hpp (_SetBaseBoxAuxValues): Return
+	true/false to indicate whether base box values are available.
+
+	* methane/methane.hpp/cpp (Methane): Clean up some
+	unnecessary/unused variables.
+
+	* configure.ac: Update to version 0.0.63.
+
+	* methane/calibrator.hpp (Calibrator): Removed averaging from
+	class Calibrator.
+
+	* methane/methane.hpp/cpp (class Methane): Implement nanosecond
+	time resolution. Added a data queue for calculating running
+	averages for calibration and the DAC outputs. Added simulated
+	basebox data. Added DATADACS output string for the basebox.
+
+	* methane/Makefile.am (noinst_HEADERS): Added methanedata.hpp.
+
+	* methane/methaneapp.cpp (process_command_line): Added simulated
+	basebox command line flag.
+
+	* methane/dspdevice.cpp/hpp (DSPDevice): Switch to nanosecond time
+	resolution. Use new classes MethaneData and MethaneStatus to
+	deliver values to the listener.
+
+	* drivers/dsp7700.c (queue_item_tag): Switch to nanosecond time
+	resolution.
+
+	* drivers/dsp_ioctl.h (DSP7700_IOC_CPLD_STARTCLOCK): Switch to
+	nanosecond time resolution.
+
+	* libmethane/doc7700.cpp (ConfigCfg): Change the default source
+	for dac6 to ch4 mole fraction.
+
+	* libmethane/Makefile.am (libmethane_la_SOURCES): Added
+	timeval.cpp and timeval.hpp.
+
+	* libmethane/clocksync.hpp/cpp (class ClockSync): Switch to
+	nanosecond resolution time for the parameters to
+	ClockSync::Sync(). Moved TimeVal into it's own file.
+
+	* libmethane/timeval.hpp/cpp (class TimeVal): Split class TimeVal
+	into it's own file.
+
+	* base/base.hpp/cpp (Base): Switch to nanosecond resolution time
+	values.
+
+	* base/dspdevice.hpp/cpp (DSPDevice): Switch to nanosecond
+	resolution time values.
+
+2009-07-29  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* methane/methane.cpp (ClientClosed): Fixed an iterator problem in
+	ClientClosed()... make sure not to use a invalidated interator
+	after a remove().
+
+	* methane/methane.hpp/cpp (Methane): Implement base box
+	synchronization queue. Rate limit writes to network clients that
+	can't keep up. Remove unused SendHeaders() method.
+
+	* common-c++/delimparser.hpp/cpp (class DelimParser):
+	Automatically detect when parsing lines and use the more efficient
+	GetNextStringToEOL().
+
+	* common-c++/socketserver.hpp (SocketClient): Changed
+	WriteBufSize() to return a unsigned size.
+
+2009-07-24  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* base/base.hpp/cpp (Base): Moved _noclockyz flag out of ClockSync
+	and into the application class. Fix up some uses of the XML
+	document class.
+
+	* base/logger.hpp/cpp (Logger): Output the DATADIAGH header line
+	to the data log file when the DIAG column is turned on.
+
+	* base/includecols.cpp (ApplyFilterToDATA): Always include the
+	checksum. Never include the millisecond counter.
+
+	* base/doc7750.cpp (Config7750): Fixed up some readonly issues in
+	the XML document class so the same class can be used in a client
+	application.
+
+	* libmethane/usbbuttondevice.hpp/cpp (UsbButtonDevice): Added
+	LED_Error() method.
+
+	* libmethane/clocksync.hpp/cpp (class ClockSync): Detect and
+	correct for tick rollovers. Added ComputingOffset() method for
+	reporting when the offset is being computed.
+
+	* libmethane/doc7700.hpp/cpp (ConfigBoxUSBSplit): Added a daily
+	split option. Fix up some readonly issues in XML document so the
+	same class can be used in a client application.
+
+	* libmethane/doc7700common.hpp/cpp (ConfigTimezone): Added
+	LoadZones() method. Read the doctype to get the zone list.
+
+	* methane/methane.hpp/cpp (Methane): Added averaging aligned with
+	wall clock time.
+
+2009-07-23  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* common-c++/linuxtty.hpp/cpp (LinuxTTYBase): Implemented line
+	counters.
+
+	* common-c++/Makefile.am (noinst_PROGRAMS): Added linuxttywatch
+	program.
+
+2009-07-07  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* drivers/io7700.h (io7700_write_cpld_clockyz): Don't mask off the
+	lower 4 bits in the clockyz register.
+
+	* configure.ac: Update to version 0.0.62.
+
+	* methane/methane.cpp/hpp (GotCalParameters): Apply calibration
+	zero and span parameters after receiving them in a XML request.
+
+	* libmethane/doc7700.cpp/hpp (configure_and_send_events): Added a
+	callback when calibration parameters are received.
+
+2009-07-06  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* drivers/io7700.h (io7700_write_cpld_clockyz): Temporarily
+	disable the bottom 4 bits in clockyz.
+
+	* sysconf/update-prep.sh: Make a backup copy of all the config
+	files before performing an update.
+
+	* configure.ac: Update to version 0.0.61.
+
+	* common-c++/socketserver.hpp/cpp (PollItem): Added error handling
+	to SocketClient used to close errant client connections. Without
+	this the parent process can use 100% CPU.
+
+2009-07-02  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* base/includecols.cpp (_Configure): Always include MSEC, SECONDS,
+	NANOSECONDS, and CHK columns. Never include DATE and TIME.
+
+	* libmethane/clocksync.hpp (class ClockSync): Provide a new
+	ComputeTime() method that converts between ticks and wall clock
+	time.
+
+	* methane/methane.cpp (GotStatusMessage): Use the new
+	ComputeTime() method of ClockSync with all messages except main
+	data stream.
+
+	* configure.ac: Update to version 0.0.60.
+
+	* base/base.cpp (GotClockSync): Temporarily disable the clock
+	synchronization until the DSP and FPGA code is working.
+
+	* methane/methane.cpp/hpp (HandlePlainTextRequest): Implement
+	deque for queuing up aux values from the base box.
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Updated DSP and CPLD
+	firmware files.
+
+	* libmethane/doc7700.cpp/hpp (ConfigCfg): Added DAC
+	configuration. Removed unused legacy config items.
+
+2009-06-25  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* configure.ac: Update to version 0.0.59.
+
+	* base/logger.hpp/cpp (Logger): Implement file splitting
+	intervals.
+
+	* base/includecols.hpp/cpp (class IncludeCols): Return seconds
+	from DATA rows when requested.
+
+	* libmethane/doc7700.hpp/cpp (ConfigBoxUSBSplit): Added Seconds()
+	method to determine log file split intervals.
+
+	* base/logger.hpp/cpp (Logger): Implement separate file for status
+	messages.
+
+	* base/base.hpp (Base): Initialize _data_handler last to avoid
+	object lifetime issues.
+
+	* base/includecols.cpp (ApplyFilterToDATA): Make sure invalid
+	times are obvious.
+
+	* drivers/io7700.c: Removed old unused CPLD JTAG registers.
+
+2009-06-24  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* configure.ac: Update to version 0.0.58.
+
+	* base/logger.hpp/cpp (Listener): Restructured logging to allow
+	selecting which columns are stored to USB. Implemented standard
+	file header.
+
+	* base/base.cpp (_UpdatePolledParameters): Removed extraneous
+	debug message.
+
+	* base/datahandler.hpp/cpp (class DataHandler): Added DATAEVENT
+	listener callback with fields parsed out.
+
+	* base/includecols.hpp/cpp (class IncludeCols): Added parameter
+	for time/date reporting from DATA records.
+
+	* libmethane/doc7700.hpp (ConfigBoxUSB): Added Data(), Status(),
+	and Split() methods.
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Updated CPLD firmware
+	version 1.0.13.
+
+2009-06-23  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* base/base.hpp/cpp (Listener): Implemented clock sync, RS232 and
+	USB data handling with new class DataHandler. Added CPLD version
+	number.
+
+	* base/logger.hpp/cpp (Listener): Use DataHandler interface to the
+	data sources.
+
+	* base/Makefile.am (core_base_SOURCES): Added includecols.hpp/cpp,
+	datahandler.hpp/cpp, and rs232.hpp/cpp.
+
+	* libmethane/doc7700.cpp (ConfigBoxData): Fix spelling mistake on
+	'auxtc3'.
+
+	* methane/watchraw.cpp (WatchRaw): Use the status state to force
+	headers so we don't get those few data lines without checksums.
+
+	* libmethane/doc7700.cpp (ConfigBoxData): Fix bug in constructor.
+
+	* base/dspdevice.hpp/cpp (DSPDevice): Added SetCPLDClockYZ()
+	method.
+
+	* base/intersys.h (CMD_CLKSYNC): Added clock sync message.
+
+	* base/doc7750.hpp/cpp (ConfigCPLD7750): Added CPLD version
+	information to XML document for the base box.
+
+	* base/head.hpp/cpp (class Head): Include the head hostname in the
+	HeadConnected() listener callback.
+
+	* base/baseapp.cpp (DaemonApp): Added noClockYZ command line flag.
+
+	* libmethane/doc7700.cpp/hpp (ConfigBoxData): Add CH4D and H2OD
+	density columns. Turn H2O output to RS232 and USB off by default.
+
+	* configure.ac: Update to version 0.0.57.
+
+	* methane/watchraw.cpp (ReceivedChars): Added tty support.
+
+	* methane/methane.hpp/cpp (CH4Calibrator): Use new calibration
+	classes for H2O and CH4 for outputting mole fraction as well as
+	uncompensated density values.
+
+	* methane/calibrator.hpp: Added CH4 compensation
+	surface. Calculate mole fraction as well as density.
+
+	* libmethane/checksum.hpp (CalcCheckSum): Added checksum handling.
+
+	* libmethane/doc7700.hpp/cpp (ConfigBoxData): Turn GetTrueSet()
+	into a const method.
+
+	* common-c++/linuxtty.hpp/cpp (LinuxTTYWriter): Added a string
+	version of LinuxTTYWriter::Write().
+
+2009-06-18  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* configure.ac: Update to version 0.0.56.
+
+	* libmethane/doc7700.cpp (ConfigFactory): Change the default
+	modulation depth to 7000.
+
+2009-06-17  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* sysconf/factory: Make a backup of /etc/factory.conf before
+	writing the new one so as not to lose important calibration
+	parameters.
+
+	* configure.ac: Update to version 0.0.55.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated LI-7700 DSP
+	firmware to 1.0.11.
+
+	* methane/Makefile.am (core_methane_SOURCES): Moved class
+	ClockSync and class Doc7700 to libmethane.
+
+	* methane/calibrator.hpp (Calibrator): Added actual gas
+	concentration in PPM or Dewpoint to density conversion based on
+	averaged T and P.
+
+	* methane/methane.hpp/cpp (struct CH4LineshapeCompensator): Added
+	lineshape compensation to the CH4 channel. Adjusted calibration
+	procedure.
+
+	* libmethane/Makefile.am (libmethane_la_SOURCES): Added class
+	ClockSync and Doc7700 to the libmethane lib.
+
+	* libmethane/doc7700.hpp/cpp: Fixed calibration tags that assumed
+	gas concentrations in PPM when in fact H2O is in dewpoint. Added
+	configuration XML for base box.
+
+	* libmethane/clocksync.hpp/cpp (_ComputeOffset): Rewrote class
+	ClockSync to use ticks instead of milliseconds.
+
+2009-06-15  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* base/head.hpp/cpp (class Head): Prefixed 'Head' to the Head
+	callbacks so they don't conflict with other callbacks. Removed
+	vector base Send() method.
+
+	* sysconf/Makefile.am (install-exec-hook): Create /mnt
+	directory. Install additional files to support starting either a
+	li7700 or li7750.
+
+	* sysconf/rc.sysinit: Read /etc/sysconfig/system to determine
+	whether to start up a li7700 or li7750.
+
+	* sysconf/li7750.conf: Added default li7750 configuration file.
+
+	* sysconf/factory: Added script to setup up system to either
+	li7700 or li7750.
+
+	* sysconf/inittab: Add the new rc.system script to select the kind
+	of system to start up: li7700 or li7750 base box.
+
+	* sysconf/update-prep.sh: Kill the base application when updating.
+
+	* network/progethernet.cpp (main): Include the interface name in
+	prompts.
+
+	* drivers/Makefile.am (DSP7750_FIRMWARE): Added LI-7750 firmware.
+
+	* drivers/dsp7700.c: Turn the firmware filename into a module
+	parameter.
+
+2009-06-09  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* methane/dspdevice.hpp/cpp (DSPDevice): Adjusted the newclockyz
+	parameter to be nominally 0.
+
+	* methane/methane.cpp (GotClockSync): _last_clockyz is now
+	nominally 0.
+
+	* methane/clocksync.cpp (CLOCKYZ_NOMINAL): Set the nominal value
+	to 0 and adjusted the valid range downward.
+
+	* methane/clocksync.hpp (class ClockSync): Added integral and
+	proportional parameters to the constructor.
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Updated CPLD firmware.
+
+2009-06-08  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* configure.ac: Update to version 0.0.54.
+
+	* base/base.hpp/cpp (Listener): Handle DSP data.
+
+	* base/Makefile.am (noinst_HEADERS): Added dspdevice.cpp/hpp and
+	intersys.h
+
+	* base/head.cpp (PollTimer): Added Description() for debugging
+	purposes.
+
+	* methane/methane.cpp (GotClockSync): Implemented setting clockyz
+	with new interface to ClockSync that removes dependencies on
+	DSPDevice.
+
+	* methane/methane.hpp (Listener): Added _last_clockyz for debugging purposes.
+
+	* methane/doc7700.hpp/cpp (ConfigurableComposite): Added USB XML
+	configuration tree.
+
+	* methane/clocksync.hpp/cpp (class ClockSync): Removed
+	dependencies on DSPDevice from ClockSync.
+
+	* methane/dspdevice.hpp/cpp (PollItem): Simplified method for
+	starting the CPLD clock.
+
+	* drivers/Makefile.am (DSP7550_FIRMWARE): Updated LI-7550
+	firmware.
+
+	* drivers/dsp_ioctl.h (DSP7700_IOC_CPLD_SETMODECH4): Added ioctl
+	magic number for setting the mode_ch4 register in the CPLD.
+
+	* drivers/io7700.h/c (io7700_read_cpld_mode_ch4): Added inline
+	functions for setting the mode_ch4 register in the CPLD.
+
+	* drivers/dsp7700.c (dsp_ioctl_cpld_setmodech4): Added a ioctl
+	interface for setting the modech4 CPLD register.
+
+	* drivers/hardware.h (struct cpld_regs): Added mode_ch4 register
+	in the CPLD for switching the base box into simulated bench mode.
+
+	* sysconf/rc.sysinit: Link in LI-7550 firmware when booting the
+	base-box.
+
+	* common-c++/pollprocessor.hpp (class PollItem): Added a virtual
+	member function Description() for debugging purposes.
+
+	* common-c++/linuxtty.cpp (LinuxTTYBase): Connect the RS-232 in
+	non-blocking mode.
+
+	* common-c++/linuxtty.hpp (PollItem): Added Description() member
+	function for debugging Poll problems.
+
+2009-06-01  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* configure.ac: Update to version 0.0.53.
+
+	* drivers/Makefile.am (CPLD_FIRMWARE): Update to CPLD firmware
+	1.0.11.
+
+2009-05-28  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* base/base.hpp/cpp (_UpdatePolledParameters): Poll some
+	parameters when a XML request comes in.
+
+	* methane/methane.hpp/cpp (_UpdatePolledParameters): Poll some
+	parameters when a XML request comes in.
+
+2009-05-27  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* base/head.cpp (Close): Clear the connection state when closing
+	the socket so that everything comes back up normally when the
+	socked reconnects.
+
+	* configure.ac: Added libmethane. Bumped version to 0.0.52.
+
+	* Makefile.am (SUBDIRS): Added libmethane.
+
+	* sysconf/rc.sysinit: Parameterize driver loading to the same
+	script can be used on the base box and the head.
+
+	* base/base.hpp/cpp (Base): Implemented network configuration via
+	XML document. Added first try at sending data to the head.
+
+	* base/Makefile.am (core_base_SOURCES): Added class Logger for
+	writing data to a USB memory stick. Added XML document for
+	configuring base box.
+
+	* libmethane/Makefile.am (libmethane_la_SOURCES): Added usb button
+	handling and commong XML document elements shared between methane
+	and base.
+
+	* methane/methane.cpp/hpp (Methane): Added base box data handling.
+
+	* methane/Makefile.am (core_methane_SOURCES): Moved some files
+	into libmethane for use in the base application.
+
+	* methane/doc7700.hpp/cpp (ConfigBoxUSB): Added <box><usb>
+	XML. Moved some XML elements to libmethane.
+
+2009-05-22  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* libmethane/Makefile.am (libmethane_la_SOURCES): Added netreset
+	button to libmethane.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated DSP and CPLD
+	firmware.
+
+2009-05-12  Kevin Ediger  <kevin@localhost.localdomain>
+
+	* methane/methaneapp.cpp (process_command_line): Added -z command
+	line switch to the getopt() function call.
+
+	* drivers/io7700.c (io7700_cpld_show): Added test1 and test2 CPLD
+	registers.
+
+	* drivers/hardware.h (struct cpld_regs): Added test1 and test2
+	CPLD registers.
+
+2009-05-05  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/doc7700.cpp (ConfigTopHeater): Default the top and
+	bottom heater power to 100 percent.
+
+2009-04-30  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configure.ac: Check for inet_pton.
+
+	* network/Makefile.am (bin_PROGRAMS): Added the progethernet
+	program.
+
+2009-04-29  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/methaneapp.cpp (DaemonApp): Added a flag to disable
+	writing the clock_yz register.
+
+	* methane/doc7700.hpp/cpp (ConfigurableComposite): Added a
+	hostname field to the network settings and made the top level name
+	field read-only. Added a reboot command.
+
+	* methane/netcontrol.hpp/cpp (class NetControl): NetControl now
+	only modifies config files. All changes take affect after a
+	reboot.
+
+	* methane/clocksync.hpp/cpp (class ClockSync): Added support for
+	disabling writing of the clock_yz register. Fixed TimeVal
+	comparison methods.
+
+	* methane/dspdevice.hpp (PollItem): Added a Close() method so
+	shutting down goes quickly after a reboot command.
+
+	* methane/Makefile.am (core_methane_SOURCES): Added
+	netresetbuttondevice.hpp/cpp.
+
+	* sysconf/rc.sysinit: Load the network reset button driver.
+
+	* drivers/net_btn.c (QUEUE_SIZE): Increased queue size to
+	accomodate button repeat events.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated dsp firmware.
+
+	* drivers/usb_btn.c (BUTTON_DOWN_EVENT): Updated to match net_btn
+	events.
+
+	* configure.ac: Update version to 0.0.51.
+
+2009-04-28  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/Makefile.am (bin_PROGRAMS): Added watchmdns test
+	program.
+
+	* methane/dspdevice.hpp: Removed unnecessary boost header.
+
+	* methane/doc7700.hpp/cpp (ConfigurableMultipleChoice): Removed
+	50Hz output rate.
+
+	* methane/netcontrol.cpp: Added <cstdlib> header.
+
+	* configurable/configbuiltin.cpp (write_doctype): Fix min/max
+	logic.
+
+	* common-c++/socket.cpp (Broadcast): Add parenthesis to make
+	bitwise operation unambiguous.
+
+2009-04-23  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* drivers/net_btn.c (BUTTON_PRESSED_LONG): Implemented long button
+	press detection (4 seconds).
+	(BUTTON_DOWN_EVENT): Implement separate up and down events for
+	cases when the long press isn't used.
+
+	* drivers/Makefile.am (SOURCES): Added net_btn driver for
+	resetting the LAN configuration back to factory defaults.
+
+	* drivers/hotplug.cpp (main): Removed extraneous comments.
+
+2009-04-22  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/doc7700.cpp (configure_and_send_events): Don't clear the
+	cmd values after handling them. By not clearing the values,
+	external devices can act on a command.
+
+	* methane/netcontrol.cpp (Apply): Call ifdown before modifying
+	/etc/network/interfaces so the dhcp client stops running.
+
+	* drivers/hardware.h (HARDWARE_NET_RESET): Added network reset
+	button GPIO.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated DSP firmware.
+
+2009-04-16  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configure.ac: Update to version 0.0.50.
+
+	* methane/doc7700.hpp (ConfigurableComposite): Added span PPM set
+	methods for manually setting calibration values.
+
+	* configurable/configbuiltin.hpp/cpp (Configurable): Improved
+	range handling in ConfigurableFloat and ConfigurableDouble to
+	handle abnormal floating point values.
+
+2009-04-15  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configurable/configurable.cpp (]): Fixed test when disabled
+	elements are ignored.
+
+	* common-c++/bonjourclient.hpp/cpp (BonjourClientListener): Fix
+	'interface' keyword problem.
+
+	* configure.ac: Updated to version 0.0.49.
+
+	* methane/methane.hpp/cpp (BonjourClientListener): Implemented
+	remote serialnumber, hostname, and network configuration.
+
+	* methane/doc7700.hpp/cpp (ConfigurableComposite): Implemented
+	serialnumber, hostname, and network configuration.
+
+	* methane/Makefile.am (core_methane_SOURCES): Added netcontrol.hpp
+	and netcontrol.cpp
+
+	* configurable/configbuiltin.hpp/cpp (Configurable): Added class
+	ConfigurableStringProxyReadOnly.
+
+	* configurable/configurable.cpp (IGNORE_DISABLED_ELEMENTS): Ignore
+	disabled elements by default.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Removed /etc/serialnumber
+	since that serial number is now stored in /etc/factory.conf.
+
+	* common-c++/socket.hpp/cpp (class SocketAddress): Added
+	SocketAddress::Broadcast() for computing broadcast addresses based
+	on an address and netmask.
+
+	* common-c++/net_util.hpp/cpp: Added SetHostname().
+
+2009-04-14  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configurable/configurable.hpp/cpp (class Configurable): Added a
+	read_doctype virtual method to Configurable for classes that may
+	want to read doctype information from another object.
+
+	* configurable/configtimestamp.cpp (write_doctype): Remove braces
+	from write_doctype methods.
+
+	* configurable/configbuiltin.cpp (write_doctype): Update
+	write_doctype methods to exclude braces and update ranges to use
+	"..." instead of a dash.
+
+	* configurable/xml_parser.hpp/cpp (class XMLQueryStringParser):
+	Added DOCTYPE to the string parser.
+
+	* configurable/xml_string.cpp: Include <cctype> header.
+
+	* methane/doc7700.cpp (write_doctype): Remove brackets in the
+	doctype string.
+
+	* drivers/dsp7700.c (dsp_ioctl_cpld_stopclock): Don't overwrite
+	jump bits when setting the CPLD config register.
+
+2009-04-09  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/Makefile.am (noinst_HEADERS): Added ptpcontrol.hpp/cpp
+
+	* methane/methane.hpp/cpp: Added H2O channel with
+	calibration. Hooked into new spin motor and heater control
+	code. Use new templatized calibration class for both H2O and
+	CH4. Implemented PTP control.
+
+	* methane/dspdevice.hpp/cpp: Added H2O and removed bandwidth
+	setting.
+
+	* methane/calibrator.hpp/cpp (Calibrator): Implemented class
+	Calibrator as a template with a type to represent a Compensator
+	object for H2O or CH4.
+
+	* methane/doc7700.hpp/cpp: Updated for beta hardware. Added H2O
+	calibration and calibration history.
+
+	* methane/clocksync.cpp (Sync): Comment out debug code.
+
+	* methane/mirrordevice.hpp/cpp (class MirrorDevice): Implemented a
+	'percent' based interface to reduce conversion to/from watts in
+	class WashMe.
+
+	* methane/washme.hpp/cpp (class WashMe): Implemented wash and
+	heater functionality for beta hardware.
+
+	* configure.ac: Update to version 0.0.48.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): New DSP code.
+
+	* drivers/dsp7700.c (dsp_ioctl_cpld_stopclock): Don't change the
+	jump-scanning bit when starting/stopping the CPLD clock.
+
+	* drivers/io7700.h (io7700_read_cpld_config): Added CPLD read
+	routine.
+
+	* common-c++/socketserver.cpp (SocketClient): Set client sockets
+	to non-block mode so clients can't 'lock-up' the socket server.
+
+2009-04-02  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configurable/configurable.hpp/cpp (class Configurable): Backed
+	out Configuable::_get_changed() virtual function since it wasn't
+	always doing the right thing. Updated unit tests to check this
+	issue.
+
+	* sysconf/rc.local: Removed old CPLD default settings since they
+	are handled by the factory XML configuration now.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated DSP and CPLD
+	firmware.
+
+	* drivers/io7700.c (io7700_cpld_show): Removed cruft from
+	cpld_regs. Renamed deltav1 and deltav2 to delta1 and delta2.
+
+	* drivers/hardware.h (struct cpld_regs): Removed cruft from
+	cpld_regs. Renamed deltav1 and deltav2 to delta1 and delta2.
+
+	* configure.ac: Update to version 0.0.47.
+
+2009-03-27  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* intersys/intersys.h (struct): Put H2O back in.
+
+2009-03-26  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/doc7700.hpp/cpp (ConfigurableComposite): Added USB
+	logging commands, PTP settings, and network configuration elements
+	to the XML document.
+
+	* methane/methane.hpp/cpp (BonjourClientListener): Added USB
+	logging commands, PTP settings, and network configuration event
+	handling.
+
+	* common-c++/socket.hpp/cpp (class SocketAddress): Added
+	operator!=.
+
+	* configure.ac: Update to version 0.0.46.
+
+	* methane/washme.hpp/cpp (class WashMe): Stubbed out WashMe class.
+
+	* methane/methane.cpp (HandlePlainTextRequest): Updated to use new
+	WashMe interface.
+
+	* methane/methane.hpp/cpp (BonjourClientListener): Implemented new
+	factory.conf and cal.conf sections to the XML document. New
+	interfaces to mirror and dsp drivers.
+
+	* methane/mirrordevice.hpp/cpp (class MirrorDevice): Implemented
+	top heater power and interface to new motor control driver.
+
+	* methane/doc7700.cpp (ConfigTopHeater): Change "delta_t" to
+	simply "deltat".
+
+	* methane/dspdevice.hpp/cpp (_DispatchStatus): Updated DSP
+	interface. Added dither parameter. Changed flags to unsigned.
+
+	* intersys/intersys.h (struct): Change flags to an unsigned 32-bit
+	number.
+
+	* methane/calibrator.cpp (ComputeCH4): Comment out lineshape
+	compensation for now.
+
+	* methane/methaneapp.cpp (Run): Removed some debug code.
+
+	* methane/doc7700.hpp/cpp (ConfigCalRecord): Added calibration
+	history. Removed unused motor control parameters. Implemented new
+	<factory> section to the configuration.
+
+	* methane/watchraw.cpp (BonjourClientListener): More complete
+	output. Uses IPV6 by default. Decodes DIAG flag parameter.
+
+	* sysconf/Makefile.am: Added new file /etc/factory.conf. Set all
+	conf files to emply default XML.
+
+	* sysconf/rc.sysinit: Added /etc/factory.conf as a persistent
+	configuration file.
+
+	* drivers/dsp7700.c (DSP_CPLD_STOPCLOCK): Fixed the CPLD config
+	register values.
+
+	* drivers/mirror.c: implement new hardware interfaces to top and
+	bottom heaters and the spin motor.
+
+	* drivers/io7700.c: Remove unused motor control parameters.
+
+	* drivers/io7700.h (io7700_write_cpld_motor_desired_pos): Added
+	inline functions for accessing motor parameters.
+
+	* drivers/hardware.h (struct cpld_regs): Remove unused motor
+	control parameters.
+
+	* configurable/configurable.cpp (set_to_default): When setting to
+	default values, don't touch disabled items.
+
+	* configurable/configurable.hpp/cpp (ConfigurableCompositeDynamicBase): 
+	Write complete children information whenever a dynamic section of
+	the XML tree changes so that deletes are correctly detected.
+
+2009-03-24  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* intersys/intersys.h (struct): Added dither amplitude to CAL_PKT.
+
+2009-03-17  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* methane/clocksync.hpp/cpp (class TimeVal): Moved TimeVal out of
+	the ClockSync class so it could be used externally.
+
+	* sysconf/Makefile.am (install-exec-hook): Install the network
+	update scripts to /sbin.
+
+	* sysconf/li7700_updater.xml: Added CPLD programming buttons.
+
+	* drivers/Makefile.am (DSP7700_FIRMWARE): Updated firmware files.
+
+	* drivers/io7700.c (io7700_cpld_write): Updated CPLD read/write
+	code for using Altera Jam STAPL player.
+
+2009-03-13  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configure.ac: Update to version 0.0.45.
+
+2009-03-12  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* drivers/io7700.c (io7700_cpld_init): No need to tweak on cpld
+	control register since the CPLD bug has been fixed.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Added network update scripts.
+
+2009-03-06  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* configure.ac: Update to version 0.0.44.
+
+2009-02-05  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* base/Makefile.am (LDADD): Added -ldbus-1.
+
+	* base/base.hpp/cpp (class Base): Added dbus event
+	handling. Automatically mount USB flash disks when inserted. Log
+	data to the USB drive.
+
+	* base/head.cpp (HandleTimeout): Removed some verbose debugging
+	messages.
+
+	* methane/methane.cpp (ZeroMode): Adjust DATAEVENT messages to be
+	more consistent (and usable).
+
+	* drivers/hotplug.cpp (_check_remove_dev_node): Added dbus disk
+	mount/umount events.
+
+	* drivers/dsp7700.c: Undefine DEBUG.
+
+	* drivers/io7700.c (io7700_gpio_configure): Configure pin mux for
+	USB button and LED. Remove gpio functions for USB button and LED
+	which is now handled in usb_btn.c
+
+	* drivers/io7700.h: Removed gpio helper functions (moved into
+	hardware.h)
+
+	* drivers/hardware.h (HARDWARE_USB_RCRD_STRT_STP_GPIO): Added USB
+	button and LED.
+	(gpio_request): Added gpio helper functions (moved from io7700.h)
+
+	* drivers/Makefile.kernel (obj-m): Added usb_btn driver.
+
+	* drivers/Makefile.am (SOURCES): Added usb_btn driver.
+
+2009-01-30  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* common-c++/dbus.cpp (_DBusEventWatcherImpl): Unregister all
+	watchers in the destructor.
+
+	* common-c++/dbus.hpp (class DBusEventWatcher): Initialize _dbus
+	to 0.
+
+	* sysconf/rc.sysinit: Use the new /etc/sysconfig directory to
+	preserve options between updates.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Create a new sysconfig
+	directory to contain init-script options.
+
+	* sysconf/messagebus: Execute dbus out of /bin to preserve some
+	default filesystem paths.
+
+	* sysconf/ptpd (prog): Read options from /etc/sysconfig/ptpd if
+	available.
+
+	* sysconf/Makefile.am (install-exec-hook): Add /etc/sysconfig dir.
+
+2009-01-28  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* sysconf/Makefile.am (install-exec-hook): Create the dbus
+	system.d directory before trying to install into it.
+
+	* configure.ac: Update to version 0.0.43.
+
+	* common-c++/dbus.hpp/cpp (class DBusEventWatcher): Changed naming
+	convention from 'Message' to 'Signal' to better reflect the dbus
+	terminology. Use PollTimer instead of the old SystemTimer. Use the
+	new PollIdleHandler interface to handle dbus dispatch calls.
+
+	* common-c++/testdbuswatch.cpp (DBusEventWatcher::SignalListener):
+	Added a general listener that registers multiple times.
+
+2009-01-27  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* common-c++/pollprocessor.hpp/cpp (class PollIdleHandler): Added
+	idle handlers.
+
+	* common-c++/Makefile.am (noinst_PROGRAMS): Added test programs
+	for dbus.
+
+	* base/base.cpp (Base::GotData): Add some debug mode messages
+	between ethernet and RS-232.
+
+	* sysconf/rc.sysinit: Start dbus at startup.
+
+2009-01-21  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* sysconf/rc.sysinit: Added comments for loading USB drivers.
+
+	* drivers/hardware.h (struct ctrl_regs): Filled out ctrl_regs.
+
+	* drivers/dsp7700.c (dsp_start): Added code for enabling McBSP
+	devices for LI-7550.
+
+	* drivers/Makefile.am (EXTRA_FIRMWARE): Added dsp firmware for
+	LI-7550.
+
+	* drivers/io7700.h (io7700_tag): Added MPUIO register control.
+
+	* configure.ac: Update to version 0.0.42.
+
+2009-01-16  Kevin Ediger  <kevin@localhost6.localdomain6>
+
+	* network/network.cpp (Network::Reconfigure): Only register
+	ssh/sftp with bonjour and allow specific applications register
+	more specific services.
+
+	* base/head.hpp/cpp (class Head): Add a std::vector Send() method.
+
+	* base/baseapp.cpp (BaseApp::Run): Lock the PID file.
+
+	* base/base.hpp/cpp (LinuxTTYReader::Listener): Implement serial
+	and register bonjour service.
+
+	* common-c++/Makefile.am (libcommon_c___la_SOURCES): Added some
+	Linux specific classes to common-c++.
+
+	* methane/Makefile.am (noinst_HEADERS): Move some classes into
+	common-c++.
+
+	* methane/methane.hpp/cpp (Methane): Register methane service with
+	bonjour.
+
+2009-01-13  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/dsp7700.c (dsp_start): Enable the McBSP before releasing
+	the DSP from reset.
+
+2008-12-23  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/watchraw.cpp (WatchRaw::AddService): Do a case
+	insensitve compare when connecting to a host.
+
+	* common-c++/bonjourclient.cpp (BonjourClientImpl::resolver_callback):
+	Free the resolver and stop trying to get multiple IPV6 addresses
+	when using Avahi.
+
+2008-12-18  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configurable/xml_parser.hpp/cpp (class XMLParser): Fix XML
+	comment parsing when valid XML tags appear inside the comment.
+
+2008-12-08  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Implement MDNS_LIB macro for automatically
+	selecting the mdns library.
+
+	* common-c++/pollprocessor.hpp/cpp (class PollTimer): Implemented
+	new PollTimer class (replaces SystemTimer).
+
+	* common-c++/bonjourclient.cpp (class AvahiTimeout): Implemented
+	AvahiTimeout with the new PollTimer class.
+
+	* common-c++/socket.cpp (SocketAddress::Scope): Added missing
+	break in Scope(unsigned).
+
+	* common-c++/Makefile.am (noinst_PROGRAMS): Added test_poll
+	program.
+
+	* common-c++/net_util.cpp: Added <algorithm> header.
+
+	* common-c++/errnoexcept.cpp: Added <cstring> header.
+
+	* common-c++/runprogramtest1.cpp: Added header <cstdlib>.
+
+	* common-c++/str_util.cpp (TestStrUtil::TestStrUtil): Remove test
+	priority number.
+
+	* configurable/xml_parser.cpp: Added <cstdlib> header.
+
+	* network/Makefile.am (LDADD): Audo detect the mdns library.
+
+	* base/Makefile.am (LDADD): Auto detect the mdns library.
+
+	* methane/watchraw.cpp (main): Added Bonjour lookups to find the
+	instrument.
+
+	* methane/clocksync.hpp: Added the <sys/time.h> header.
+
+	* methane/gainsupriv.hpp: Added the <cstring> header.
+
+	* methane/linuxclock.cpp: Added the <algorithm> header.
+
+	* methane/linuxtty.cpp: Added the <cstring> header.
+
+2008-11-19  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* Makefile.am (SUBDIRS): Added base, network, and compensation
+	subdirectories.
+
+	* methane/Makefile.am (LDADD): Added automatic mdnsd library
+	selection.
+
+	* methane/methane.hpp/cpp (Doc7700::Listener): Implemented top
+	heater config, lineshape compensation, debug monitoring, and the
+	new singleton PollProcessor.
+
+	* methane/methaneapp.cpp (class MethaneApp): Added debug
+	monitoring.
+
+	* methane/calibrator.hpp/cpp (class Calibrator): Added lineshape
+	compensation.
+
+	* methane/doc7700.hpp/cpp (class ConfigTopHeater): Added top
+	heater configuration.
+
+	* methane/washme.hpp/cpp (class WashMe): Remove std::auto_ptr.
+
+	* methane/clocksync.hpp/cpp (class ClockSync): Added debug
+	monitoring. Report Linux time when when starting the CPLD clock.
+
+	* methane/dspdevice.hpp/cpp (class DSPDevice): Use new
+	PollProcessor singleton. Remove zero and span parameters since
+	these are handled on the ARM side now.
+
+	* methane/linuxtty.hpp (class LinuxTTYWriter): Use new singleton
+	PollProcessor.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Remove Howl residue and
+	install Apple startup files.
+
+	* sysconf/rc.sysinit: Set up br0 as the default network
+	interface. Use Apple's mdnsd instead of Howl.
+
+	* sysconf/inittab: Add network deamon and base daemon for LI-7700
+	base box.
+
+	* sysconf/interfaces: Set br0 as the default network interface.
+
+	* configure.ac: Update to version 0.0.41. Automatically detect
+	Avahi or Apple.
+
+	* common-c++/Makefile.am (test_LDADD): Automatically detect the
+	correct mdns library... Apple or Avahi.
+
+	* common-c++/bonjourclient.hpp/cpp (class BonjourResolver): Added
+	a comprehensive resolver. Use the new singleton
+	PollProcessor. Added support for PollProcessor and Avahi.
+
+	* common-c++/socketserver.cpp/hpp (SocketServer::Listen): Don't
+	automatically listen... added a new Listen() method. Use the new
+	singleton PollProcessor.
+
+	* common-c++/pollprocessor.hpp/cpp (class PollProcessor): Make
+	PollProcessor a singleton.
+
+	* common-c++/socket.hpp/cpp (class SocketAddress): Added
+	comparison operators for SocketAddress.
+
+	* common-c++/systemtimer.cpp (SystemTimer::ServiceListeners):
+	Fixed ServiceListeners() so that a timer the un-registers itself
+	during the GotAlarm() callback doesn't cause a seg-fault.
+
+	* common-c++/str_util.hpp/cpp: Added a STL based case-insensitive
+	string compare.
+
+	* drivers/hardware.h (struct cpld_regs): Added wheel position
+	register (li-7200 only).
+
+2008-09-16  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.39.
+
+	* methane/methane.hpp/cpp (Doc7700::Listener): Added _clock_sync
+	to synchronize DSP clock to Linux clock.
+
+	* methane/dspdevice.hpp/cpp (class DSPDevice): Added clock control
+	methods. Added ZeroMsec() method for zeroing the DSP msec counter.
+
+	* methane/Makefile.am (core_methane_SOURCES): Added clocksync.hpp
+	and clocksync.cpp.
+
+	* drivers/io7700.h (io7700_write_cpld_config): Added CPLD
+	interface.
+
+	* drivers/dsp_ioctl.h (DSP7700_IOC_CPLD_STOPCLOCK): DSP ioctl
+	definitions.
+
+	* drivers/dsp7700.c (dsp_ioctl): Added a ioctl interface for
+	controlling the DSP sample clock.
+
+	* drivers/Makefile.am (FIRMWARE): Updated firmware.
+
+2008-09-09  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* intersys/intersys.h (CMD_ZEROMSEC): Added a zero msec counter
+	command.
+
+2008-09-03  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/hardware.h (struct cpld_regs): Added clock CPLD control
+	registers.
+
+	* drivers/io7700.c: Added clock CPLD control registers.
+
+	* configure.ac: Updated to version 0.0.38.
+
+	* common-c++/net_util.hpp/cpp (class NetworkInterface): Added
+	HardwareAddress().
+
+	* sysconf/mDNSResponder (OTHER_MDNSRD_OPTS): Added MAC address to
+	mdns information.
+
+2008-09-02  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.cpp (Methane::GotStatusMessage): Remove
+	extraneous headers. Remove simulated values for mirror motor
+	parameters.
+
+	* methane/doc7700.cpp (ConfigCPLDMotor::Refresh): Fix some
+	incorrect /sys filenames.
+
+	* configure.ac: Update to version 0.0.37.
+
+2008-08-28  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* Makefile.am (SUBDIRS): Added the network daemon.
+
+	* methane/doc7700.hpp/cpp (class ConfigCPLDMotor): Added CPLD
+	register items to the XML document. Renamed configure() to
+	configure_and_send_events() to configure() can now be used without
+	event handling side-effects.
+
+	* methane/methane.cpp: Added CPLD register reporting in the XML
+	and status DATAS messages.
+
+	* methane/methane.hpp/cpp (Doc7700::Listener): Added socket
+	listeners triggered by the XML &query_changes; query.
+
+	* configurable/xml_parser.cpp (XMLQueryStringParser::GetNextToken):
+	Changed &query_item_changes; to &query_changes_item; so that
+	socket listeners work correctly.
+
+	* configurable/configurable.hpp/cpp (class Configurable): Added
+	recursive changed state methods that will now clear a parents
+	changed state if all the children are cleared. Added class level
+	event handling that can be used in addition to the listener based
+	event handling.
+
+	* drivers/io7700.c: Added CPLD motor control registers.
+
+	* drivers/hardware.h (struct cpld_regs): Added CPLD motor control
+	registers.
+
+	* configure.ac: Update to version 0.0.36.
+
+2008-08-15  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configurable/configtimestamp.cpp (ConfigurableTime_HourMinutes::read):
+	Fix Timestamp() initialization problem that was mixing in the base
+	year with the hours:minutes:seconds values.
+
+	* configure.ac: Update to version 0.0.35.
+
+	* sysconf/mDNSResponder (OTHER_MDNSRD_OPTS): Added a serial number
+	separate from the hostname.
+
+	* sysconf/sshd (SSHCONFIG): Make sure some important files exist
+	before starting sshd.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Added a custom zcip-script to
+	fix the non-responsive mDNSResponder when assigning a link-local
+	address.
+
+	* sysconf/mDNSResponder.conf.in: Added _licor-li7700._tcp to
+	mDNS. Need to remove _li7700._tcp at some point.
+
+2008-07-31  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.34.
+
+2008-07-22  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.cpp (Methane::LoadConf): Load timezones from the
+	linux clock. Update block temperature handling. Allow XML requests
+	to start with '<' or '&'. Output the doctype for testing purposes.
+
+	* methane/methane.hpp (Doc7700::Listener): Updated
+	GotLineLockConfig() implementation.
+
+	* methane/Makefile.am (bin_PROGRAMS): Added the watchraw program
+	to the standard install.
+
+	* methane/washme.cpp (Schedule::SetSchedule): Updated to allow
+	daily wash schedules to span midnight.
+
+	* methane/doc7700.cpp/hpp (Doc7700): Change the multiple choice
+	items to use the new dynamic initialization. Added doctype
+	info. Updated <LineLock> tag for the additional control on the
+	block temp.
+
+	* methane/linuxclock.hpp/cpp (class LinuxClock): Cache the zone
+	string.
+
+	* configurable/xml_parser.hpp/cpp (class XMLQueryStringParser):
+	Added doctype support.
+
+	* configurable/configbuiltin.hpp/cpp (class ConfigurableFloat):
+	Added doctype support.
+
+	* configurable/configurable.hpp/cpp (class
+	ConfigurableMultipleChoice): Updated to support dynamic vectors to
+	facilitate loading choices dynamically.
+
+	* configurable/configurable.hpp/cpp (class Configurable): Added
+	doctype support. Added readonly support.
+
+	* configurable/configtimestamp.hpp/cpp (class ConfigurableTime):
+	Added different permutations on configuring the time. Added
+	doctype support.
+
+	* drivers/io7700.c (io7700_cpld_jtag_show): Added minimal CPLD
+	jtag support.
+
+	* configure.ac: Update to version 0.0.33.
+
+2008-07-11  Kevin Ediger  <kevin@engr.licor.com>
+
+	* methane/dspdevice.hpp/cpp (class DSPDevice): Added block
+	temperature control. Added DC waveforms.
+
+	* methane/methane.hpp/cpp (Doc7700::Listener): Added DC waveform
+	listener handlers. Modification to implement new block temperature
+	regulation control in the DSP.
+
+	* drivers/Makefile.am (SOURCES): Removed the ioctl interface from
+	dsp7700. Added block temperature control.
+
+2008-07-09  Kevin Ediger  <kevin@engr.licor.com>
+
+	* drivers/Makefile.am (FIRMWARE): Updated firmware and linux
+	version.
+
+2008-06-30  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* sysconf/sshd (SSHD): Updated location of sshd and ssh-keygen to
+	/usr/sbin/ and /usr/bin/ respectively.
+
+	* drivers/hotplug.cpp (Hotplug::_load_node_info): Don't abort
+	setting up dev node if PHYSDEVDRIVER environment variable doesn't
+	exist.
+
+	* methane/dspdevice.cpp (struct EndianConverter): Fixed the
+	pointer aliasing problem for float conversions.
+
+	* methane/dspdevice.hpp (class DSPDevice): Added SendPing()
+	command.
+
+	* methane/dspdevice.cpp (DSPDevice::SendPing): Added SendPing()
+	command.
+
+2008-06-12  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.32.
+
+	* methane/methane.hpp (Doc7700::Listener): Don't load the clock
+	from the configuration file.
+
+	* methane/doc7700.hpp/cpp (class Doc7700): Added timezone support.
+
+	* methane/methane.hpp/cpp (Methane): Added timezone support with
+	class LinuxClock.
+
+	* drivers/Makefile.am (SOURCES): Added dsp_ioctl.h header.
+
+	* drivers/io7700.c (io7700_probe): Removed class_device.
+
+	* drivers/mirror.c (mirror7700_probe): Removed class_device.
+
+	* drivers/dsp7700.c (dsp7700_probe): Removed class_device.
+	(dsp_ioctl): Added a ioctl interface.
+
+2008-06-06  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/dsp7700.c (dsp_read): Added PTP event handling. Use a
+	Linux mutex instead of semaphore.
+
+	* drivers/mirror.c (mirror_tag): Use a Linux mutex instead of a
+	semaphore.
+
+	* drivers/io7700.c (io7700_gpio_configure): Switch the SPI port to
+	the DSP side.
+
+2008-05-30  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* intersys/intersys.h (CMD_PTPGEN): Added PTP General and Event
+	commands.
+
+2008-05-27  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/dsp7700.c (_dsp_mem_write16_checked): Changed the code
+	organization so byte swap is only needed during firmware load.
+
+	* configure.ac: Update to version 0.0.31.
+
+2008-05-22  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* sysconf/Makefile.am (EXTRA_DIST): Added ptpd service start
+	script.
+
+	* sysconf/rc.sysinit : Start the ptpd service at boot time.
+
+	* methane/dspdevice.cpp (DSPDevice::_DispatchData): Added DSP
+	timestamps.
+
+	* methane/dspdevice.hpp (class DSPDevice): Added DSP timestamps.
+
+	* methane/methane.cpp (Methane::GotData): Added timestamps to all
+	DSP message events.
+
+	* methane/methane.hpp (Doc7700::Listener): Added timestamps to all
+	DSP message event handlers.
+
+	* drivers/dsp7700.c (queue_item_tag): Added a timestamp to all DSP
+	message blocks. Remove extra byte swaps.
+
+	* drivers/io7700.c (io7700_probe): Turn on the clocks before
+	initializing the CPLD.
+
+2008-04-08  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.30.
+
+2008-02-07  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/io7700.c (io7700_mclk_start): Start up MCLK at 12MHz for
+	the fpga/cpld.
+
+2008-02-06  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.29. Supports new Intel flash
+	chips with CFI version 1.5.
+
+2008-01-23  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/io7700.c (io7700_cpld_init): Add a 10msec delay when
+	resetting the CPLD.
+
+2008-01-15  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.28.
+
+2007-12-04  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.cpp (HandlePlainTextRequest): Use a new
+	StaticConfigChanged() method for coordinating requests from plain
+	text and XML interfaces.
+
+	* methane/doc7700.hpp (class ConfigLineLock): Added a method to
+	set the temp control to AUTO/MANUAL.
+
+2007-11-26  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/washme.cpp (RunSchedule): Check to make sure the
+	schedule is on before changing anything in the schedule handler.
+
+	* methane/methane.cpp (StaticConfigChanged): Save the static
+	configuration to flash. (i.e. make it non-volatile).
+
+	* configure.ac: Update to version 0.0.27.
+
+2007-11-25  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.26.
+
+2007-11-08  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.hpp/cpp (GotStatusMessage): Fix heater and motor
+	diagnostics.
+
+	* sysconf/Makefile.am (EXTRA_DIST): Added minimal support for
+	static IP addresses.
+
+	* configure.ac: Update to version 0.0.25.
+
+	* methane/doc7700.cpp (ConfigHeater): Set the appropriate integer
+	ranges for heater power and spin power.
+
+2007-11-07  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.24.
+
+2007-11-06  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/io7700.c (io7700_gpio_configure): Remove the static
+	switch that was configuring TIMER2 for DSP access.
+
+2007-11-02  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.23.
+
+	* unittest/test.hpp: Add RunUnitTests() forward declaration.
+
+2007-10-23  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.22.
+
+2007-08-22  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update for version 0.0.20.
+
+	* drivers/io7700.c (io7700_gpio_configure): Set mux register 3.
+
+2007-08-09  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/Makefile.am (KERNELSRC): Update the kernel version to
+	2.6.20.15-omap1.
+
+	* drivers/io7700.c (gpio_request): Added some GPIO compatibility
+	functions.
+
+	* sysconf/rc.sysinit: Always allow nifd daemon to call ifup/ifdown
+	to prevent race conditions.
+
+	* sysconf/inittab: Reenable methane at boot time.
+
+2007-08-08  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.19.
+
+2007-08-07  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Updated version to 0.0.18.
+
+2007-07-13  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/queue.h: Remove bool.h header since the latest Linux
+	kernel includes it.
+
+	* drivers/io7700.c: Update for new kernel.
+
+	* drivers/hardware.h: Update for new kernel.
+
+	* drivers/dsp7700.c: Update driver for new kernel.
+
+	* configure.ac: Update to version 0.0.17.
+
+	* sysconf/rc.sysinit: Force the SMSC911x driver to load the MAC
+	address from the EEPROM before starting networking.
+
+2007-07-09  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.17.
+
+2007-06-06  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.hpp/cpp (Methane): Added heater power.
+
+	* drivers/Makefile.am (FIRMWARE): Update to tga_070606.hex.
+
+	* drivers/hardware.h: Added heater_pwm.
+
+	* drivers/io7700.c: Added heater_pwm.
+
+	* drivers/Makefile.am (all-local): Copy intersys.h to the build
+	directory.
+
+2007-06-04  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/Makefile.am (FIRMWARE): Updated DSP firmware.
+
+2007-06-01  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.16.
+
+2006-09-18  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.hpp/cpp (Listener): Added H2O channel.
+
+	* methane/dspdevice.hpp/cpp (class DSPDevice): Added H2O
+	calibration parameters.
+
+	* methane/doc7700.hpp/cpp (class Cal7700): Added H2O calibration
+	parameters.
+
+	* methane/Makefile.am (bin_PROGRAMS): Added sweep program.
+
+	* configure.ac: Update to verion 0.0.15.
+
+2006-09-12  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* intersys/intersys.h: Align all data structures to 32 bit.
+
+2006-05-26  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/tga.hex (FIRMWARE): Updated firmware.
+
+	* methane/doc7700.cpp (ConfigDacs): Widen acceptable range for CH4
+	on the DACS.
+
+	* configure.ac: Update to version 0.0.14.
+
+2006-05-25  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* sysconf/group (nobody): Added nobody user and group.
+
+	* configure.ac: Updated DSP firmware. Update to version 0.0.13.
+
+2006-05-09  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.12.
+
+2006-05-08  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* drivers/tga.hex: Updated DSP firmware.
+
+2006-05-05  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.cpp (GotRequest): Remove ppm from calibration
+	name. Calibration actual target only has to be greater than 0.0.
+
+	* methane/methane.hpp (Listener): Remove ppm from calibration
+	parameter since it isn't in ppm any longer.
+
+	* methane/calibrator.hpp (class Calibrator): Calibration is no
+	longer in ppm, so remove the ppm from variable name.
+
+	* configure.ac: Update to version 0.0.11.
+
+2006-04-21  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* sysconf/Makefile.am (EXTRA_DIST): Remove mDNSResponder.conf and
+	add mDNSResponder.conf.in template file.
+
+	* sysconf/inittab: Remove comment from methane.
+
+	* sysconf/rc.sysinit: Automatically generate
+	/etc/mDNSResponder.conf based on software version and hostname.
+
+	* configure.ac: Updated to version 0.0.10.
+
+2006-04-20  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Updated to version 0.0.9.
+
+2006-02-14  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.cpp (Methane): Average for 20 seconds when
+	zeroing or spanning.
+
+	* drivers/tga.hex: Updated DSP code.
+
+2006-02-09  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* methane/methane.hpp/cpp (class Methane): Use new Conf7700 class.
+
+	* methane/doc7700.hpp/cpp (class Conf7700): Added new XML class
+	Conf7700.
+
+	* methane/dspdevice.hpp/cpp (class DSPDevice): Added
+	DSPDevice::SendConf() method.
+
+	* configure.ac: Update to version 0.0.8.
+
+	* methane/socketserver.hpp (class SocketServer): Remove some
+	cruft.
+
+	* intersys/intersys.h: Changed average parameter in CFG_PKT to
+	apply to all channels instead of individual CH4 and H2O.
+
+2006-02-02  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.7.
+
+2006-01-30  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.6.
+
+2006-01-27  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.5.
+
+2006-01-06  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Update to version 0.0.4.
+
+2006-01-05  Kevin Ediger  <kevin@dixon.licor.com>
+
+	* configure.ac: Updated to version 0.0.3.
+

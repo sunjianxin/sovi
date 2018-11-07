@@ -1,0 +1,16 @@
+*~
+aclocal.m4
+autom4te.cache
+build
+buildx86
+config.guess
+config.sub
+configure
+compile
+depcomp
+*.in
+INSTALL
+install-sh
+ltmain.sh
+m4
+missing
