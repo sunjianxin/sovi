@@ -58,6 +58,7 @@ int Soil::ReadCSV()
 		_table[_header.at(i)] = data;
 	}
 	int counter = 0;
+	int num_table_col = -1;
 	while (std::getline(infile, line))
 	{
 		counter++;
@@ -72,6 +73,8 @@ int Soil::ReadCSV()
 		}
 		row.push_back(token);
 		field_idx = stoi(row.at(2));
+		num_table_col = row.size();
+		//std::cout << num_table_col << std::endl;
 
 		if (field_idx <= 56 && field_idx != -1) {
 			int col_idx, row_idx;
@@ -93,6 +96,22 @@ int Soil::ReadCSV()
 			}
 		}
 	}
+	//fix zero value data
+	for (int i = 4; i < num_table_col; i++) {
+		for (int j = 0; j < 280; j++) {
+			if (_table[_header.at(i)][j] == 0) {
+				if (j >= 8) { 
+					_table[_header.at(i)][j] = _table[_header.at(i)][j - 8];
+				} else {
+					_table[_header.at(i)][j] = _table[_header.at(i)][j + 8];
+				}
+			}
+		}
+	}
+
+	for (int j = 0; j < 280; j++) {
+		std::cout << _table["MCg___"][j] << std::endl;
+	}
 	/* creat a .silo file */
 	DBfile *dbfile = NULL;
 	dbfile = DBCreate("soil.silo",
@@ -104,7 +123,7 @@ int Soil::ReadCSV()
 		fprintf(stderr, "Failed!\n");
 		return -1;
 	}
-	/* fill the silo with data */
+	///* fill the silo with data */
 	int ndims = 3;
 	float x[NUM_COL], y[NUM_ROW], z[NUM_DEP];
 	float *coords[] = {x, y, z};
@@ -123,6 +142,7 @@ int Soil::ReadCSV()
 	DBPutQuadmesh(dbfile, "soil_volume", NULL, coords, dims, ndims, DB_FLOAT, DB_COLLINEAR, NULL);
    	for (int i = 4; i < _header.size(); i++) {
 		DBPutQuadvar1(dbfile, _header.at(i).c_str(), "soil_volume", _table[_header.at(i)], dims, ndims, NULL, 0, DB_FLOAT, DB_NODECENT, NULL);
+		//std::cout << _header.at(i) << std::endl;
 	}
 	DBClose(dbfile);
 	//std::cout << _table[_header.at(5)][48] << std::endl;
